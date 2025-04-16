@@ -34,7 +34,6 @@ RSBlocHost >> dirtyRectangle: aRectangleOrNil [
 	"Copied from RSMorphicHost"
 
 	| visibleRectangle |
-	(self class classLayout slots includes: #dirtyRectangle) ifFalse:[ self class addSlot: #dirtyRectangle ].
 	dirtyRectangle := aRectangleOrNil.
 	dirtyRectangle ifNil: [ ^ self ].
 	visibleRectangle := canvas visibleRectangle.
@@ -89,7 +88,6 @@ RSBlocHost >> space [
 RSBlocHost >> updateDirtyRectangleWith: aRectangle [
 	"Copied from RSMorphicHost"
 
-	(self class classLayout slots includes: #dirtyRectangle) ifFalse:[ self class addSlot: #dirtyRectangle ].
 	self dirtyRectangle:
 		(dirtyRectangle
 			 ifNil: [ aRectangle ]
