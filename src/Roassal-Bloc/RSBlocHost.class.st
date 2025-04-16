@@ -7,7 +7,8 @@ Class {
 	#instVars : [
 		'space',
 		'canvasElement',
-		'lastMousePosition'
+		'lastMousePosition',
+		'dirtyRectangle'
 	],
 	#category : 'Roassal-Bloc-Core',
 	#package : 'Roassal-Bloc',
@@ -26,6 +27,18 @@ RSBlocHost >> canvasElement [
 RSBlocHost >> defaultWindowTitle [
 
 	^ super defaultWindowTitle , ' - Bloc'
+]
+
+{ #category : 'update' }
+RSBlocHost >> dirtyRectangle: aRectangleOrNil [
+	"Copied from RSMorphicHost"
+
+	| visibleRectangle |
+	(self class classLayout slots includes: #dirtyRectangle) ifFalse:[ self class addSlot: #dirtyRectangle ].
+	dirtyRectangle := aRectangleOrNil.
+	dirtyRectangle ifNil: [ ^ self ].
+	visibleRectangle := canvas visibleRectangle.
+	dirtyRectangle := dirtyRectangle intersect: visibleRectangle
 ]
 
 { #category : 'accessing' }
@@ -70,4 +83,15 @@ RSBlocHost >> space [
 	"Answer the BlSpace where the the canvas has been opened. If it wasn't opened, the answer is nil."
 
 	^ space
+]
+
+{ #category : 'update' }
+RSBlocHost >> updateDirtyRectangleWith: aRectangle [
+	"Copied from RSMorphicHost"
+
+	(self class classLayout slots includes: #dirtyRectangle) ifFalse:[ self class addSlot: #dirtyRectangle ].
+	self dirtyRectangle:
+		(dirtyRectangle
+			 ifNil: [ aRectangle ]
+			 ifNotNil: [ dirtyRectangle merge: aRectangle ])
 ]
