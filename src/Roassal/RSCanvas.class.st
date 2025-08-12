@@ -349,6 +349,7 @@ RSCanvas >> hideEncompassingRectangles [
 
 { #category : 'accessing' }
 RSCanvas >> host [
+
 	^ host
 ]
 
