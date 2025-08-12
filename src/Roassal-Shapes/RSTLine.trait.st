@@ -166,16 +166,6 @@ RSTLine >> paint: aPaint [
 ]
 
 { #category : 'public - shape' }
-RSTLine >> shape [
-	^ self explicitRequirement
-]
-
-{ #category : 'public - shape' }
-RSTLine >> shape: aRSAbstractLine [
-	self explicitRequirement
-]
-
-{ #category : 'public - shape' }
 RSTLine >> width [
 	^ self shape border width
 ]
