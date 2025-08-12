@@ -29,7 +29,7 @@ RSBlocHost >> defaultWindowTitle [
 	^ super defaultWindowTitle , ' - Bloc'
 ]
 
-{ #category : 'update' }
+{ #category : 'dirty areas' }
 RSBlocHost >> dirtyRectangle: aRectangleOrNil [
 	"Copied from RSMorphicHost"
 
@@ -84,7 +84,7 @@ RSBlocHost >> space [
 	^ space
 ]
 
-{ #category : 'update' }
+{ #category : 'dirty areas' }
 RSBlocHost >> updateDirtyRectangleWith: aRectangle [
 	"Copied from RSMorphicHost"
 
